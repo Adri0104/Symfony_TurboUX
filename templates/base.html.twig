@@ -7,13 +7,25 @@
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
             {#{{ encore_entry_link_tags('app') }}#}
+            <style>
+                .alert-success {
+                    color: green;
+                    font-weight: bold;
+                }
+            </style>
         {% endblock %}
 
         {% block javascripts %}
             {#{{ encore_entry_script_tags('app') }}#}
+            <script type="module" src="https://cdn.skypack.dev/@hotwired/turbo"></script>
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {{ include('partial/nav.html.twig') }}
+        <hr>
+        <main role="main">
+            {{ include('partial/_flash_message.html.twig') }}
+            {% block body %}{% endblock %}
+        </main>
     </body>
 </html>
