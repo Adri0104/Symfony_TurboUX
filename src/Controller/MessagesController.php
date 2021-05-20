@@ -19,7 +19,7 @@ class MessagesController extends AbstractController
     /**
      * @Route("/contact", name="app_contact")
      */
-    public function new(Request $request): Response
+    public function new(Request $request)
     {
         $form = $this->createFormBuilder()
             ->add('name', TextType::class, [
@@ -65,33 +65,60 @@ class MessagesController extends AbstractController
 //            ], $response);
 //        }
 
-        return $this->handleForm(
-            $form,
-            $request,
-            function (FormInterface $form, array $data) use ($request) {
-                dump(sprintf('Incoming email from %s <%s>', $data['name'], $data['email']));
+        $form->handleRequest($request);
 
-                // PHP8 | strpos() PHP < 8
-                if (str_contains($request->headers->get('accept'), 'text/vnd.turbo-stream.html')) {
-                    return new Response(
-                        $this->renderView('messages/success.stream.html.twig', [
-                            'name' => $data['name']
-                        ]),
-                        200,
-                        [
-                            'Content-Type' => 'text/vnd.turbo-stream.html'
-                        ]
-                    );
-                }
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            dump(sprintf('Incoming email from %s <%s>', $data['name'], $data['email']));
 
-                $this->addFlash('success', "Message sent!");
-                return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
-            },
-            function (FormInterface $form, ?array $data) {
-                return $this->render('messages/new.html.twig', [
-                    'form' => $form->createView()
-                ]);
+            // PHP8 | strpos() PHP < 8
+            if (str_contains($request->headers->get('accept'), 'text/vnd.turbo-stream.html')) {
+                return new Response(
+                    $this->renderView('messages/success.stream.html.twig', [
+                        'name' => $data['name']
+                    ]),
+                    200,
+                    [
+                        'Content-Type' => 'text/vnd.turbo-stream.html'
+                    ]
+                );
             }
-        );
+
+            $this->addFlash('success', "Message sent!");
+            return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
+        }
+
+//        return $this->handleForm(
+//            $form,
+//            $request,
+//            function (FormInterface $form, array $data) use ($request) {
+//                dump(sprintf('Incoming email from %s <%s>', $data['name'], $data['email']));
+//
+//                // PHP8 | strpos() PHP < 8
+//                if (str_contains($request->headers->get('accept'), 'text/vnd.turbo-stream.html')) {
+//                    return new Response(
+//                        $this->renderView('messages/success.stream.html.twig', [
+//                            'name' => $data['name']
+//                        ]),
+//                        200,
+//                        [
+//                            'Content-Type' => 'text/vnd.turbo-stream.html'
+//                        ]
+//                    );
+//                }
+//
+//                $this->addFlash('success', "Message sent!");
+//                return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
+//            },
+//            function (FormInterface $form, ?array $data) {
+//                return $this->render('messages/new.html.twig', [
+//                    'form' => $form->createView()
+//                ]);
+//            }
+//        );
+
+        return $this->renderForm('messages/new.html.twig', [
+            'form' => $form
+        ]);
     }
 }
