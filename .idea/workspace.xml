@@ -2,16 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0cbcdaef-c140-47f0-84ca-3bd2f64a785e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Form/MessageFormType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/messages/_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/MessagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MessagesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/messages/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/messages/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/messages/success.stream.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/messages/success.stream.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="DONT_SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -150,6 +154,7 @@
     <property name="TYPO3XliffLanguages" value="af:Afrikaans;&#10;ar:Arabic;&#10;bs:Bosnian;&#10;bg:Bulgarian;&#10;ca:Catalan;&#10;ch:Chinese (Simpl.);&#10;cs:Czech;&#10;da:Danish;&#10;de:German;&#10;el:Greek;&#10;eo:Esperanto;&#10;es:Spanish;&#10;et:Estonian;&#10;eu:Basque;&#10;fa:Persian;&#10;fi:Finnish;&#10;fo:Faroese;&#10;fr:French;&#10;fr_CA:French (Canada);&#10;gl:Galician;&#10;he:Hebrew;&#10;hi:Hindi;&#10;hr:Croatian;&#10;hu:Hungarian;&#10;is:Icelandic;&#10;it:Italian;&#10;ja:Japanese;&#10;ka:Georgian;&#10;kl:Greenlandic;&#10;km:Khmer;&#10;ko:Korean;&#10;lt:Lithuanian;&#10;lv:Latvian;&#10;ms:Malay;&#10;nl:Dutch;&#10;no:Norwegian;&#10;pl:Polish;&#10;pt:Portuguese;&#10;pt_BR:Brazilian Portuguese;&#10;ro:Romanian;&#10;ru:Russian;&#10;sk:Slovak;&#10;sl:Slovenian;&#10;sq:Albanian;&#10;sr:Serbian;&#10;sv:Swedish;&#10;th:Thai;&#10;tr:Turkish;&#10;uk:Ukrainian;&#10;vi:Vietnamese;&#10;zh:Chinese (Trad.)" />
     <property name="TYPO3XliffPathToExtensionLanguageFiles" value="Resources/Private/Language/" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -184,12 +189,24 @@
       <workItem from="1621002386247" duration="39000" />
       <workItem from="1621501241650" duration="133000" />
       <workItem from="1621504129197" duration="7000" />
-      <workItem from="1621531321491" duration="2249000" />
+      <workItem from="1621531321491" duration="2721000" />
+      <workItem from="1622493633721" duration="4828000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

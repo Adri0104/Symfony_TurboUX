@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="turbo-cache-control" content="no-preview">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
@@ -18,6 +19,12 @@
         {% block javascripts %}
             {#{{ encore_entry_script_tags('app') }}#}
             <script type="module" src="https://cdn.skypack.dev/@hotwired/turbo"></script>
+{#            <script>#}
+{#                document.addEventListener("turbo:before-cache", function () {#}
+{#                    document.querySelectorAll('.alert-success').forEach(el => el.remove());#}
+{#                    document.querySelectorAll('div#contact form > div > ul').forEach(el => el.remove());#}
+{#                })#}
+{#            </script>#}
         {% endblock %}
     </head>
     <body>

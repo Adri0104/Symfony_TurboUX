@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\MessageFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -21,30 +22,9 @@ class MessagesController extends AbstractController
      */
     public function new(Request $request)
     {
-        $form = $this->createFormBuilder()
-            ->add('name', TextType::class, [
-                'attr' => ['placeholder' => 'test'],
-                'constraints' => [
-                    new NotBlank(),
-                    new Length(['min' => 2])
-                ]
-            ])
-            ->add('email', EmailType::class, [
-                'attr' => ['placeholder' => 'test@test.fr'],
-                'constraints' => [
-                    new NotBlank(),
-                    new Email()
-                ]
-            ])
-            ->add('message', TextareaType::class, [
-                'attr' => ['placeholder' => 'message test'],
-                'constraints' => [
-                    new NotBlank(),
-                    new Length(['min' => 10])
-                ]
-            ])
-            ->getForm()
-        ;
+        $form = $this->createForm(MessageFormType::class);
+
+        $emptyForm = clone $form;
 
 //        != PHP8
 //        $form->handleRequest($request);
@@ -75,7 +55,8 @@ class MessagesController extends AbstractController
             if (str_contains($request->headers->get('accept'), 'text/vnd.turbo-stream.html')) {
                 return new Response(
                     $this->renderView('messages/success.stream.html.twig', [
-                        'name' => $data['name']
+                        'name' => $data['name'],
+                        'form' => $emptyForm->createView()
                     ]),
                     200,
                     [
