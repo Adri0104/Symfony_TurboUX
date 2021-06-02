@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\UX\Turbo\Stream\TurboStreamResponse;
 
 class MessagesController extends AbstractController
 {
@@ -52,17 +53,11 @@ class MessagesController extends AbstractController
             dump(sprintf('Incoming email from %s <%s>', $data['name'], $data['email']));
 
             // PHP8 | strpos() PHP < 8
-            if (str_contains($request->headers->get('accept'), 'text/vnd.turbo-stream.html')) {
-                return new Response(
-                    $this->renderView('messages/success.stream.html.twig', [
-                        'name' => $data['name'],
-                        'form' => $emptyForm->createView()
-                    ]),
-                    200,
-                    [
-                        'Content-Type' => 'text/vnd.turbo-stream.html'
-                    ]
-                );
+            if (TurboStreamResponse::STREAM_FORMAT === $request->getPreferredFormat()) {
+                return $this->render('messages/success.stream.html.twig', [
+                    'name' => $data['name'],
+                    'form' => $emptyForm->createView()
+                ], new TurboStreamResponse());
             }
 
             $this->addFlash('success', "Message sent!");
